@@ -189,6 +189,7 @@ export const RemotionRoot: React.FC = () => {
         schema={captionedVideoSchema}
         width={1080}
         height={1920}
+        fps={60}
         defaultProps={{
           src: staticFile("sample-video.mp4"),
         }}
@@ -200,6 +201,7 @@ export const RemotionRoot: React.FC = () => {
         schema={neonGlowVideoSchema}
         width={1080}
         height={1920}
+        fps={60}
         defaultProps={{
           src: staticFile("sample-video.mp4"),
         }}
@@ -211,6 +213,7 @@ export const RemotionRoot: React.FC = () => {
         schema={retroWaveVideoSchema}
         width={1080}
         height={1920}
+        fps={60}
         defaultProps={{
           src: staticFile("sample-video.mp4"),
         }}
@@ -222,6 +225,7 @@ export const RemotionRoot: React.FC = () => {
         schema={glitchVideoSchema}
         width={1080}
         height={1920}
+        fps={60}
         defaultProps={{
           src: staticFile("sample-video.mp4"),
         }}
@@ -233,6 +237,7 @@ export const RemotionRoot: React.FC = () => {
         schema={minimalVideoSchema}
         width={1080}
         height={1920}
+        fps={60}
         defaultProps={{
           src: staticFile("sample-video.mp4"),
         }}
@@ -244,6 +249,7 @@ export const RemotionRoot: React.FC = () => {
         schema={glassmorphismVideoSchema}
         width={1080}
         height={1920}
+        fps={60}
         defaultProps={{
           src: staticFile("sample-video.mp4"),
         }}
@@ -255,6 +261,7 @@ export const RemotionRoot: React.FC = () => {
         schema={gradientRainbowVideoSchema}
         width={1080}
         height={1920}
+        fps={60}
         defaultProps={{
           src: staticFile("sample-video.mp4"),
         }}
@@ -266,6 +273,7 @@ export const RemotionRoot: React.FC = () => {
         schema={cartoonBubbleVideoSchema}
         width={1080}
         height={1920}
+        fps={60}
         defaultProps={{
           src: staticFile("sample-video.mp4"),
         }}
@@ -277,6 +285,7 @@ export const RemotionRoot: React.FC = () => {
         schema={metallicVideoSchema}
         width={1080}
         height={1920}
+        fps={60}
         defaultProps={{
           src: staticFile("sample-video.mp4"),
         }}
@@ -288,6 +297,7 @@ export const RemotionRoot: React.FC = () => {
         schema={neonBorderVideoSchema}
         width={1080}
         height={1920}
+        fps={60}
         defaultProps={{
           src: staticFile("sample-video.mp4"),
         }}
@@ -299,6 +309,7 @@ export const RemotionRoot: React.FC = () => {
         schema={pixelArtVideoSchema}
         width={1080}
         height={1920}
+        fps={60}
         defaultProps={{
           src: staticFile("sample-video.mp4"),
         }}
@@ -310,6 +321,7 @@ export const RemotionRoot: React.FC = () => {
         schema={elegantShadowVideoSchema}
         width={1080}
         height={1920}
+        fps={60}
         defaultProps={{
           src: staticFile("sample-video.mp4"),
         }}
@@ -321,6 +333,7 @@ export const RemotionRoot: React.FC = () => {
         schema={embossed3DVideoSchema}
         width={1080}
         height={1920}
+        fps={60}
         defaultProps={{
           src: staticFile("sample-video.mp4"),
         }}
@@ -332,6 +345,7 @@ export const RemotionRoot: React.FC = () => {
         schema={fluidGradientVideoSchema}
         width={1080}
         height={1920}
+        fps={60}
         defaultProps={{
           src: staticFile("sample-video.mp4"),
         }}
@@ -343,6 +357,7 @@ export const RemotionRoot: React.FC = () => {
         schema={techWireframeVideoSchema}
         width={1080}
         height={1920}
+        fps={60}
         defaultProps={{
           src: staticFile("sample-video.mp4"),
         }}
@@ -354,6 +369,7 @@ export const RemotionRoot: React.FC = () => {
         schema={bouncyBallVideoSchema}
         width={1080}
         height={1920}
+        fps={60}
         defaultProps={{
           src: staticFile("sample-video.mp4"),
         }}
@@ -365,6 +381,7 @@ export const RemotionRoot: React.FC = () => {
         schema={spinSpiralVideoSchema}
         width={1080}
         height={1920}
+        fps={60}
         defaultProps={{
           src: staticFile("sample-video.mp4"),
         }}
@@ -376,6 +393,7 @@ export const RemotionRoot: React.FC = () => {
         schema={elasticZoomVideoSchema}
         width={1080}
         height={1920}
+        fps={60}
         defaultProps={{
           src: staticFile("sample-video.mp4"),
         }}
@@ -387,6 +405,7 @@ export const RemotionRoot: React.FC = () => {
         schema={swayBeatVideoSchema}
         width={1080}
         height={1920}
+        fps={60}
         defaultProps={{
           src: staticFile("sample-video.mp4"),
         }}
@@ -398,6 +417,7 @@ export const RemotionRoot: React.FC = () => {
         schema={shakeImpactVideoSchema}
         width={1080}
         height={1920}
+        fps={60}
         defaultProps={{
           src: staticFile("sample-video.mp4"),
         }}
@@ -409,6 +429,7 @@ export const RemotionRoot: React.FC = () => {
         schema={fireFlameVideoSchema}
         width={1080}
         height={1920}
+        fps={60}
         defaultProps={{
           src: staticFile("sample-video.mp4"),
         }}
@@ -420,6 +441,7 @@ export const RemotionRoot: React.FC = () => {
         schema={waterRippleVideoSchema}
         width={1080}
         height={1920}
+        fps={60}
         defaultProps={{
           src: staticFile("sample-video.mp4"),
         }}
@@ -431,6 +453,7 @@ export const RemotionRoot: React.FC = () => {
         schema={electricLightningVideoSchema}
         width={1080}
         height={1920}
+        fps={60}
         defaultProps={{
           src: staticFile("sample-video.mp4"),
         }}
@@ -442,6 +465,7 @@ export const RemotionRoot: React.FC = () => {
         schema={smokeMistVideoSchema}
         width={1080}
         height={1920}
+        fps={60}
         defaultProps={{
           src: staticFile("sample-video.mp4"),
         }}
@@ -453,6 +477,7 @@ export const RemotionRoot: React.FC = () => {
         schema={starryParticleVideoSchema}
         width={1080}
         height={1920}
+        fps={60}
         defaultProps={{
           src: staticFile("sample-video.mp4"),
         }}
@@ -464,6 +489,7 @@ export const RemotionRoot: React.FC = () => {
         schema={quantumTeleportVideoSchema}
         width={1080}
         height={1920}
+        fps={60}
         defaultProps={{
           src: staticFile("sample-video.mp4"),
         }}
@@ -475,6 +501,7 @@ export const RemotionRoot: React.FC = () => {
         schema={hologramVideoSchema}
         width={1080}
         height={1920}
+        fps={60}
         defaultProps={{
           src: staticFile("sample-video.mp4"),
         }}
@@ -486,6 +513,7 @@ export const RemotionRoot: React.FC = () => {
         schema={magicSpellVideoSchema}
         width={1080}
         height={1920}
+        fps={60}
         defaultProps={{
           src: staticFile("sample-video.mp4"),
         }}
@@ -497,6 +525,7 @@ export const RemotionRoot: React.FC = () => {
         schema={cyberpunkHackerVideoSchema}
         width={1080}
         height={1920}
+        fps={60}
         defaultProps={{
           src: staticFile("sample-video.mp4"),
         }}
@@ -508,6 +537,7 @@ export const RemotionRoot: React.FC = () => {
         schema={cosmicGalaxyVideoSchema}
         width={1080}
         height={1920}
+        fps={60}
         defaultProps={{
           src: staticFile("sample-video.mp4"),
         }}
@@ -519,6 +549,7 @@ export const RemotionRoot: React.FC = () => {
         schema={spaceTimeWarpVideoSchema}
         width={1080}
         height={1920}
+        fps={60}
         defaultProps={{
           src: staticFile("sample-video.mp4"),
         }}
@@ -530,6 +561,7 @@ export const RemotionRoot: React.FC = () => {
         schema={diamondCrystalVideoSchema}
         width={1080}
         height={1920}
+        fps={60}
         defaultProps={{
           src: staticFile("sample-video.mp4"),
         }}
@@ -541,6 +573,7 @@ export const RemotionRoot: React.FC = () => {
         schema={audioWaveVideoSchema}
         width={1080}
         height={1920}
+        fps={60}
         defaultProps={{
           src: staticFile("sample-video.mp4"),
         }}
@@ -552,6 +585,7 @@ export const RemotionRoot: React.FC = () => {
         schema={liquidMetalVideoSchema}
         width={1080}
         height={1920}
+        fps={60}
         defaultProps={{
           src: staticFile("sample-video.mp4"),
         }}
@@ -563,6 +597,7 @@ export const RemotionRoot: React.FC = () => {
         schema={rainbowAuroraVideoSchema}
         width={1080}
         height={1920}
+        fps={60}
         defaultProps={{
           src: staticFile("sample-video.mp4"),
         }}
