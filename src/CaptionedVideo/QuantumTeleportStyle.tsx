@@ -1,4 +1,4 @@
-import { AbsoluteFill, useCurrentFrame } from "remotion";
+import { AbsoluteFill, useCurrentFrame, useVideoConfig } from "remotion";
 
 interface QuantumTeleportStyleProps {
   page: {
@@ -16,19 +16,28 @@ export const QuantumTeleportStyle: React.FC<QuantumTeleportStyleProps> = ({
   enterProgress,
 }) => {
   const frame = useCurrentFrame();
+  const { width, height } = useVideoConfig();
+
+  const baseSize = Math.min(width, height);
+  const fontSize = baseSize * 0.041;
+  const padding = baseSize * 0.019;
+  const gap = baseSize * 0.011;
+  const portalInset = baseSize * 0.0093;
+  const borderWidth = baseSize * 0.0019;
+  const particleOffsetMax = baseSize * 0.014;
   
   return (
-    <AbsoluteFill style={{ 
-      justifyContent: "center", 
+    <AbsoluteFill style={{
+      justifyContent: "center",
       alignItems: "center",
-      padding: 20,
+      padding: padding,
     }}>
       <div style={{
         display: "flex",
         flexWrap: "wrap",
         justifyContent: "center",
         alignItems: "center",
-        gap: 12,
+        gap: gap,
         maxWidth: "90%",
       }}>
         {page.tokens.map((token, tokenIndex) => {
@@ -58,9 +67,9 @@ export const QuantumTeleportStyle: React.FC<QuantumTeleportStyleProps> = ({
                     key={`particle-${i}`}
                     style={{
                       position: 'absolute',
-                      left: Math.sin(quantumPhase + i * 2) * 15,
-                      top: Math.cos(quantumPhase + i * 1.5) * 10,
-                      fontSize: '8px',
+                      left: Math.sin(quantumPhase + i * 2) * particleOffsetMax,
+                      top: Math.cos(quantumPhase + i * 1.5) * particleOffsetMax * 0.67,
+                      fontSize: `${fontSize * 0.18}px`,
                       color: `hsl(${180 + i * 60}, 80%, 60%)`,
                       opacity: 0.6,
                       pointerEvents: 'none',
@@ -76,32 +85,32 @@ export const QuantumTeleportStyle: React.FC<QuantumTeleportStyleProps> = ({
                     style={{
                       position: 'relative',
                       fontFamily: "Arial Black, sans-serif",
-                      fontSize: 44,
+                      fontSize: fontSize,
                       fontWeight: 900,
                       color: "white",
                       textShadow: isCurrentlyReading
-                        ? "0 0 20px #00ffff, 0 0 40px #00ffff, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000"
+                        ? `0 0 ${baseSize * 0.019}px #00ffff, 0 0 ${baseSize * 0.037}px #00ffff, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000`
                         : "-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000",
                       background: isCurrentlyReading
-                        ? `linear-gradient(45deg, 
-                            rgba(0,255,255,0.3) 0%, 
-                            rgba(255,0,255,0.3) 50%, 
+                        ? `linear-gradient(45deg,
+                            rgba(0,255,255,0.3) 0%,
+                            rgba(255,0,255,0.3) 50%,
                             rgba(0,255,255,0.3) 100%)`
                         : 'transparent',
-                      padding: isCurrentlyReading ? "8px 6px" : "4px 2px",
-                      borderRadius: "8px",
+                      padding: isCurrentlyReading ? `${padding * 0.42}px ${padding * 0.32}px` : `${padding * 0.21}px ${padding * 0.11}px`,
+                      borderRadius: `${baseSize * 0.0074}px`,
                       transform: `
                         translate(${particleOffset}px, ${particleOffset * 0.5}px) 
                         scale(${isCurrentlyReading ? 1.1 : 1})
                         rotateX(${isCurrentlyReading ? 0 : Math.sin(quantumPhase) * 10}deg)
                       `,
                       opacity: particleOpacity,
-                      transition: isCurrentlyReading 
+                      transition: isCurrentlyReading
                         ? "all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55)"
                         : "none",
                       display: 'inline-block',
-                      filter: isCurrentlyReading 
-                        ? "drop-shadow(0 0 10px rgba(0,255,255,0.8))"
+                      filter: isCurrentlyReading
+                        ? `drop-shadow(0 0 ${baseSize * 0.0093}px rgba(0,255,255,0.8))`
                         : "none",
                     }}
                   >
@@ -116,19 +125,19 @@ export const QuantumTeleportStyle: React.FC<QuantumTeleportStyleProps> = ({
                 <>
                   <div style={{
                     position: 'absolute',
-                    inset: -10,
+                    inset: `-${portalInset}px`,
                     borderRadius: '50%',
-                    background: `conic-gradient(from ${frame * 2}deg, 
-                      transparent, rgba(0,255,255,0.4), transparent, 
+                    background: `conic-gradient(from ${frame * 2}deg,
+                      transparent, rgba(0,255,255,0.4), transparent,
                       rgba(255,0,255,0.4), transparent)`,
                     animation: `spin 2s linear infinite`,
                     pointerEvents: 'none',
                   }} />
                   <div style={{
                     position: 'absolute',
-                    inset: -15,
+                    inset: `-${baseSize * 0.014}px`,
                     borderRadius: '50%',
-                    border: '2px solid rgba(0,255,255,0.6)',
+                    border: `${borderWidth}px solid rgba(0,255,255,0.6)`,
                     animation: `pulse 1s ease-in-out infinite alternate`,
                     pointerEvents: 'none',
                   }} />

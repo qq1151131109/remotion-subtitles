@@ -602,6 +602,43 @@ export const RemotionRoot: React.FC = () => {
           src: staticFile("sample-video.mp4"),
         }}
       />
+      {/* 测试不同分辨率 */}
+      <Composition
+        id="NeonGlowStyle-Landscape"
+        component={NeonGlowVideo}
+        calculateMetadata={calculateNeonGlowVideoMetadata}
+        schema={neonGlowVideoSchema}
+        width={1080}
+        height={608}
+        fps={60}
+        defaultProps={{
+          src: staticFile("sample-video-landscape.mp4"),
+        }}
+      />
+      <Composition
+        id="NeonGlowStyle-Square"
+        component={NeonGlowVideo}
+        calculateMetadata={calculateNeonGlowVideoMetadata}
+        schema={neonGlowVideoSchema}
+        width={1080}
+        height={1080}
+        fps={60}
+        defaultProps={{
+          src: staticFile("sample-video-square.mp4"),
+        }}
+      />
+      <Composition
+        id="NeonGlowStyle-720p"
+        component={NeonGlowVideo}
+        calculateMetadata={calculateNeonGlowVideoMetadata}
+        schema={neonGlowVideoSchema}
+        width={1280}
+        height={720}
+        fps={60}
+        defaultProps={{
+          src: staticFile("sample-video-720p.mp4"),
+        }}
+      />
     </>
   );
 };

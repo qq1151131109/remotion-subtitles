@@ -19,17 +19,6 @@ import { TikTokPage } from "@remotion/captions";
 // 设置字体家族为自定义的粗体字体
 const fontFamily = TheBoldFont;
 
-// 定义字幕容器的样式
-const container: React.CSSProperties = {
-  justifyContent: "center",  // 水平居中对齐
-  alignItems: "center",      // 垂直居中对齐
-  top: undefined,            // 不设置顶部距离
-  bottom: 350,               // 距离底部350像素（字幕位置）
-  height: 150,               // 容器高度150像素
-};
-
-// 期望的字体大小（像素）
-const DESIRED_FONT_SIZE = 120;
 // 当前正在播放词汇的高亮颜色（亮绿色）
 const HIGHLIGHT_COLOR = "#39E508";
 
@@ -40,10 +29,22 @@ export const Page: React.FC<{
 }> = ({ enterProgress, page }) => {
   // 获取当前视频帧数
   const frame = useCurrentFrame();
-  // 获取视频配置：宽度和帧率
-  const { width, fps } = useVideoConfig();
+  // 获取视频配置：宽度、高度和帧率
+  const { width, height, fps } = useVideoConfig();
   // 将当前帧数转换为毫秒时间戳
   const timeInMs = (frame / fps) * 1000;
+
+  // 响应式字体大小：基于视频尺寸的较小边计算（11%）
+  const DESIRED_FONT_SIZE = Math.min(width, height) * 0.11;
+
+  // 响应式容器样式
+  const container: React.CSSProperties = {
+    justifyContent: "center",  // 水平居中对齐
+    alignItems: "center",      // 垂直居中对齐
+    top: undefined,            // 不设置顶部距离
+    bottom: height * 0.18,     // 距离底部18%（响应式）
+    height: height * 0.08,     // 容器高度8%（响应式）
+  };
 
   // 根据容器宽度自动适配文字大小
   const fittedText = fitText({
@@ -63,7 +64,7 @@ export const Page: React.FC<{
         style={{
           fontSize,                        // 动态计算的字体大小
           color: "white",                  // 基础文字颜色为白色
-          WebkitTextStroke: "20px black",  // 黑色描边20像素，增强对比度
+          WebkitTextStroke: `${Math.min(width, height) * 0.018}px black`,  // 响应式描边（1.8%）
           paintOrder: "stroke",            // 描边在文字下方渲染
           // 入场动画变换：缩放和垂直移动
           transform: makeTransform([

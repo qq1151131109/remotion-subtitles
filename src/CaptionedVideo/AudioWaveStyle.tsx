@@ -1,4 +1,4 @@
-import { AbsoluteFill, useCurrentFrame } from "remotion";
+import { AbsoluteFill, useCurrentFrame, useVideoConfig } from "remotion";
 
 interface AudioWaveStyleProps {
   page: {
@@ -16,6 +16,18 @@ export const AudioWaveStyle: React.FC<AudioWaveStyleProps> = ({
   enterProgress,
 }) => {
   const frame = useCurrentFrame();
+  const { width, height } = useVideoConfig();
+
+  // 响应式尺寸计算
+  const baseFontSize = Math.min(width, height) * 0.04;
+  const waveBarWidth = Math.min(width, height) * 0.0037;
+  const waveAmplitudeBase = Math.min(width, height) * 0.028;
+  const waveAmplitudeVar = Math.min(width, height) * 0.018;
+  const spectrumHeight = Math.min(width, height) * 0.018;
+  const spectrumDistance = Math.min(width, height) * 0.046;
+  const particleSize = Math.min(width, height) * 0.0037;
+  const particleOrbitX = Math.min(width, height) * 0.056;
+  const particleOrbitY = Math.min(width, height) * 0.037;
   
   return (
     <AbsoluteFill style={{ 
@@ -32,7 +44,7 @@ export const AudioWaveStyle: React.FC<AudioWaveStyleProps> = ({
         pointerEvents: 'none',
       }}>
         {Array.from({length: 20}).map((_, i) => {
-          const amplitude = 30 + Math.sin((frame + i * 8) * 0.1) * 20;
+          const amplitude = waveAmplitudeBase + Math.sin((frame + i * 8) * 0.1) * waveAmplitudeVar;
           const frequency = 0.02 + i * 0.001;
           return (
             <div
@@ -41,12 +53,12 @@ export const AudioWaveStyle: React.FC<AudioWaveStyleProps> = ({
                 position: 'absolute',
                 left: `${i * 5}%`,
                 bottom: '20%',
-                width: '4px',
+                width: `${waveBarWidth}px`,
                 height: `${amplitude}px`,
                 background: `hsl(${180 + i * 10}, 70%, 60%)`,
                 opacity: 0.4,
                 borderRadius: '2px',
-                transform: `translateY(${Math.sin(frame * frequency) * 10}px)`,
+                transform: `translateY(${Math.sin(frame * frequency) * (Math.min(width, height) * 0.0093)}px)`,
               }}
             />
           );
@@ -85,7 +97,7 @@ export const AudioWaveStyle: React.FC<AudioWaveStyleProps> = ({
                 }}>
                   {Array.from({length: 16}).map((_, i) => {
                     const angle = (i * 22.5);
-                    const waveHeight = 20 + Math.sin((frame + i * 5) * 0.12) * 15;
+                    const waveHeight = spectrumHeight + Math.sin((frame + i * 5) * 0.12) * (spectrumHeight * 0.75);
                     return (
                       <div
                         key={i}
@@ -93,17 +105,17 @@ export const AudioWaveStyle: React.FC<AudioWaveStyleProps> = ({
                           position: 'absolute',
                           left: '50%',
                           top: '50%',
-                          width: '3px',
+                          width: `${waveBarWidth}px`,
                           height: `${waveHeight}px`,
                           background: `hsl(${180 + i * 12}, 80%, 65%)`,
                           borderRadius: '2px',
                           transform: `
-                            translate(-50%, -50%) 
-                            rotate(${angle}deg) 
-                            translateY(-50px)
+                            translate(-50%, -50%)
+                            rotate(${angle}deg)
+                            translateY(-${spectrumDistance}px)
                           `,
-                          transformOrigin: 'center 50px',
-                          boxShadow: `0 0 8px hsl(${180 + i * 12}, 80%, 65%)`,
+                          transformOrigin: `center ${spectrumDistance}px`,
+                          boxShadow: `0 0 ${Math.min(width, height) * 0.0074}px hsl(${180 + i * 12}, 80%, 65%)`,
                         }}
                       />
                     );
@@ -113,7 +125,7 @@ export const AudioWaveStyle: React.FC<AudioWaveStyleProps> = ({
               
               <span style={{
                 fontFamily: "Audiowide, monospace",
-                fontSize: 45,
+                fontSize: baseFontSize,
                 fontWeight: 700,
                 background: isCurrentlyReading
                   ? `linear-gradient(45deg, #00ffff, #ff00ff, #ffff00, #00ffff)`
@@ -122,12 +134,12 @@ export const AudioWaveStyle: React.FC<AudioWaveStyleProps> = ({
                 WebkitTextFillColor: isCurrentlyReading ? "transparent" : "#ffffff",
                 backgroundClip: "text",
                 textShadow: isCurrentlyReading
-                  ? `0 0 20px rgba(0,255,255,0.8), 0 0 40px rgba(255,0,255,0.6),
+                  ? `0 0 ${Math.min(width, height) * 0.018}px rgba(0,255,255,0.8), 0 0 ${Math.min(width, height) * 0.037}px rgba(255,0,255,0.6),
                      -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000`
                   : "-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000",
-                padding: isCurrentlyReading ? "12px 18px" : "6px 10px",
-                borderRadius: "12px",
-                border: isCurrentlyReading ? "2px solid rgba(0,255,255,0.5)" : "none",
+                padding: isCurrentlyReading ? `${Math.min(width, height) * 0.011}px ${Math.min(width, height) * 0.017}px` : `${Math.min(width, height) * 0.0056}px ${Math.min(width, height) * 0.0093}px`,
+                borderRadius: `${Math.min(width, height) * 0.011}px`,
+                border: isCurrentlyReading ? `2px solid rgba(0,255,255,0.5)` : "none",
                 position: 'relative',
                 top: isCurrentlyReading ? "-2px" : "0px",
                 display: 'inline-block',
@@ -145,14 +157,14 @@ export const AudioWaveStyle: React.FC<AudioWaveStyleProps> = ({
                   key={i}
                   style={{
                     position: 'absolute',
-                    width: '4px',
-                    height: '4px',
+                    width: `${particleSize}px`,
+                    height: `${particleSize}px`,
                     background: `hsl(${180 + i * 18}, 80%, 70%)`,
                     borderRadius: '50%',
-                    left: Math.sin((frame + i * 36) * 0.08) * 60 + 50 + '%',
-                    top: Math.cos((frame + i * 36) * 0.08) * 40 + 50 + '%',
+                    left: Math.sin((frame + i * 36) * 0.08) * particleOrbitX + 50 + '%',
+                    top: Math.cos((frame + i * 36) * 0.08) * particleOrbitY + 50 + '%',
                     opacity: 0.7,
-                    boxShadow: `0 0 10px hsl(${180 + i * 18}, 80%, 70%)`,
+                    boxShadow: `0 0 ${Math.min(width, height) * 0.0093}px hsl(${180 + i * 18}, 80%, 70%)`,
                     pointerEvents: 'none',
                     transform: `scale(${0.5 + Math.sin((frame + i) * 0.1) * 0.8})`,
                   }}
