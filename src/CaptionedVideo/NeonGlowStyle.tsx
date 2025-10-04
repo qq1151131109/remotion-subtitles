@@ -32,7 +32,7 @@ export const NeonGlowStyle: React.FC<{
 
   // 响应式容器
   const container: React.CSSProperties = {
-    justifyContent: "center",
+    justifyContent: "flex-end",
     alignItems: "center",
     top: undefined,
     bottom: height * 0.18,

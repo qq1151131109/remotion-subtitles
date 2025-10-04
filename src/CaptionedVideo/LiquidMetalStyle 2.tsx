@@ -28,7 +28,7 @@ export const LiquidMetalStyle: React.FC<LiquidMetalStyleProps> = ({
   
   return (
     <AbsoluteFill style={{
-      justifyContent: "flex-end",
+      justifyContent: "center",
       alignItems: "center",
       padding: padding,
       background: "radial-gradient(circle, rgba(40,40,60,0.5), rgba(10,10,20,0.9) 70%)",
@@ -96,8 +96,8 @@ export const LiquidMetalStyle: React.FC<LiquidMetalStyleProps> = ({
                 transform: `skewX(${liquidFlow * 0.3}deg)`,
                 transition: "all 0.1s ease-out",
                 boxShadow: isCurrentlyReading
-                  ? `0 0 ${baseSize * 0.028}px rgba(192,192,192,0.4),
-                     inset 0 0 ${baseSize * 0.019}px rgba(230,230,250,0.2)`
+                  ? `0 0 30px rgba(192,192,192,0.4), 
+                     inset 0 0 20px rgba(230,230,250,0.2)`
                   : "none",
               }}>
                 {token.text}
@@ -110,9 +110,9 @@ export const LiquidMetalStyle: React.FC<LiquidMetalStyleProps> = ({
                       top: '20%',
                       left: `${10 + Math.sin(frame * 0.06) * 30}%`,
                       width: '60%',
-                      height: `${reflectionHeight}px`,
+                      height: '3px',
                       background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent)',
-                      borderRadius: `${reflectionHeight * 0.67}px`,
+                      borderRadius: '2px',
                       opacity: mercuryShimmer,
                       pointerEvents: 'none',
                     }} />
@@ -121,9 +121,9 @@ export const LiquidMetalStyle: React.FC<LiquidMetalStyleProps> = ({
                       top: '60%',
                       left: `${20 + Math.sin(frame * 0.04 + 1) * 25}%`,
                       width: '40%',
-                      height: `${reflectionHeight * 0.67}px`,
+                      height: '2px',
                       background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent)',
-                      borderRadius: `${reflectionHeight * 0.33}px`,
+                      borderRadius: '1px',
                       opacity: mercuryShimmer * 0.7,
                       pointerEvents: 'none',
                     }} />
@@ -133,7 +133,7 @@ export const LiquidMetalStyle: React.FC<LiquidMetalStyleProps> = ({
 
               {/* 液态水银滴 */}
               {isCurrentlyReading && Array.from({length: 8}).map((_, i) => {
-                const dropSize = dropletSize + Math.sin((frame + i * 20) * 0.07) * dropletSize * 0.67;
+                const dropSize = 3 + Math.sin((frame + i * 20) * 0.07) * 2;
                 const dropY = Math.sin((frame + i * 15) * 0.05) * 50;
                 
                 return (
@@ -165,27 +165,27 @@ export const LiquidMetalStyle: React.FC<LiquidMetalStyleProps> = ({
                 <>
                   <div style={{
                     position: 'absolute',
-                    inset: `-${baseSize * 0.0028}px`,
-                    background: `linear-gradient(45deg,
-                      rgba(255,255,255,0.3),
-                      transparent 30%,
-                      transparent 70%,
+                    inset: -3,
+                    background: `linear-gradient(45deg, 
+                      rgba(255,255,255,0.3), 
+                      transparent 30%, 
+                      transparent 70%, 
                       rgba(192,192,192,0.3))`,
-                    borderRadius: `${baseSize * 0.021 + liquidFlow}px`,
+                    borderRadius: `${23 + liquidFlow}px`,
                     pointerEvents: 'none',
                   }} />
-
+                  
                   {/* 表面张力效果 */}
                   <div style={{
                     position: 'absolute',
-                    inset: `-${baseSize * 0.0074}px`,
+                    inset: -8,
                     background: `radial-gradient(
                       ellipse at ${50 + Math.sin(frame * 0.03) * 20}% ${50 + Math.cos(frame * 0.05) * 20}%,
                       rgba(230,230,250,0.2),
                       transparent 50%
                     )`,
                     borderRadius: '50%',
-                    filter: `blur(${baseSize * 0.0093}px)`,
+                    filter: 'blur(10px)',
                     opacity: mercuryShimmer,
                     pointerEvents: 'none',
                   }} />
@@ -198,14 +198,14 @@ export const LiquidMetalStyle: React.FC<LiquidMetalStyleProps> = ({
                   position: 'absolute',
                   left: '100%',
                   top: '50%',
-                  width: `${baseSize * 0.028}px`,
-                  height: `${baseSize * 0.0056}px`,
+                  width: '30px',
+                  height: '6px',
                   background: 'linear-gradient(90deg, rgba(192,192,192,0.6), transparent)',
-                  borderRadius: `${baseSize * 0.0028}px`,
+                  borderRadius: '3px',
                   transform: 'translateY(-50%)',
                   opacity: 0.7,
                   pointerEvents: 'none',
-                  filter: `blur(${borderWidth * 0.36}px)`,
+                  filter: 'blur(1px)',
                 }} />
               )}
             </div>

@@ -43,7 +43,7 @@ const getFileExists = (file: string) => {
   return Boolean(fileExists);
 };
 
-const SWITCH_CAPTIONS_EVERY_MS = 1200;
+const SWITCH_CAPTIONS_EVERY_MS = 300;
 
 // 通用视频组件
 export const GenericCaptionedVideo: React.FC<{

@@ -42,7 +42,7 @@ const getFileExists = (file: string) => {
   return Boolean(fileExists);
 };
 
-const SWITCH_CAPTIONS_EVERY_MS = 1200;
+const SWITCH_CAPTIONS_EVERY_MS = 300;
 
 export const ShakeImpactVideo: React.FC<{
   src: string;

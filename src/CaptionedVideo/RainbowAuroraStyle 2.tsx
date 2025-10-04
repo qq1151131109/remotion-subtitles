@@ -1,4 +1,4 @@
-import { AbsoluteFill, useCurrentFrame, useVideoConfig } from "remotion";
+import { AbsoluteFill, useCurrentFrame } from "remotion";
 
 interface RainbowAuroraStyleProps {
   page: {
@@ -16,22 +16,12 @@ export const RainbowAuroraStyle: React.FC<RainbowAuroraStyleProps> = ({
   enterProgress,
 }) => {
   const frame = useCurrentFrame();
-  const { width, height } = useVideoConfig();
-
-  const baseSize = Math.min(width, height);
-  const fontSize = baseSize * 0.045;
-  const padding = baseSize * 0.019;
-  const gap = baseSize * 0.024;
-  const borderWidth = baseSize * 0.0028;
-  const particleSize = baseSize * 0.0019;
-  const lightBeamWidth = baseSize * 0.0028;
-  const lightBeamHeight = baseSize * 0.093;
   
   return (
-    <AbsoluteFill style={{
-      justifyContent: "flex-end",
+    <AbsoluteFill style={{ 
+      justifyContent: "center", 
       alignItems: "center",
-      padding: padding,
+      padding: 20,
       background: "radial-gradient(ellipse, rgba(0,20,40,0.3), rgba(0,5,15,0.9) 70%)",
     }}>
       {/* 极光背景 */}
@@ -74,7 +64,7 @@ export const RainbowAuroraStyle: React.FC<RainbowAuroraStyleProps> = ({
         flexWrap: "wrap",
         justifyContent: "center",
         alignItems: "center",
-        gap: gap,
+        gap: 26,
         maxWidth: "90%",
         position: 'relative',
         zIndex: 10,
@@ -96,7 +86,7 @@ export const RainbowAuroraStyle: React.FC<RainbowAuroraStyleProps> = ({
               {isCurrentlyReading && (
                 <div style={{
                   position: 'absolute',
-                  inset: `-${padding * 1.05}px`,
+                  inset: -20,
                   background: `linear-gradient(
                     45deg,
                     hsla(${colorShift}, 80%, 60%, 0.2) 0%,
@@ -105,16 +95,16 @@ export const RainbowAuroraStyle: React.FC<RainbowAuroraStyleProps> = ({
                     hsla(${colorShift + 180}, 75%, 75%, 0.3) 75%,
                     hsla(${colorShift + 240}, 90%, 55%, 0.2) 100%
                   )`,
-                  borderRadius: `${baseSize * 0.028}px`,
-                  filter: `blur(${padding * 1.05}px)`,
+                  borderRadius: '30px',
+                  filter: 'blur(20px)',
                   pointerEvents: 'none',
                   animation: 'aurora-flow 4s ease-in-out infinite',
                 }} />
               )}
-
+              
               <span style={{
                 fontFamily: "Comfortaa, cursive",
-                fontSize: fontSize,
+                fontSize: 48,
                 fontWeight: 700,
                 background: isCurrentlyReading
                   ? `linear-gradient(45deg, 
@@ -135,14 +125,14 @@ export const RainbowAuroraStyle: React.FC<RainbowAuroraStyleProps> = ({
                   ? `${50 + Math.sin(frame * 0.02) * 50}% ${50 + Math.cos(frame * 0.03) * 50}%`
                   : "center",
                 textShadow: isCurrentlyReading
-                  ? `0 0 ${baseSize * 0.028}px hsla(${colorShift}, 80%, 70%, 0.8),
-                     0 0 ${baseSize * 0.056}px hsla(${colorShift + 120}, 70%, 80%, 0.6),
+                  ? `0 0 30px hsla(${colorShift}, 80%, 70%, 0.8), 
+                     0 0 60px hsla(${colorShift + 120}, 70%, 80%, 0.6),
                      -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000`
                   : "-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000",
-                padding: isCurrentlyReading ? `${padding * 0.79}px ${padding * 1.16}px` : `${padding * 0.42}px ${padding * 0.63}px`,
-                borderRadius: `${baseSize * 0.023}px`,
-                border: isCurrentlyReading
-                  ? `${borderWidth}px solid hsla(${colorShift}, 70%, 70%, 0.5)`
+                padding: isCurrentlyReading ? "15px 22px" : "8px 12px",
+                borderRadius: "25px",
+                border: isCurrentlyReading 
+                  ? `3px solid hsla(${colorShift}, 70%, 70%, 0.5)` 
                   : "none",
                 position: 'relative',
                 top: isCurrentlyReading ? "-2px" : "0px",
@@ -163,8 +153,8 @@ export const RainbowAuroraStyle: React.FC<RainbowAuroraStyleProps> = ({
               {/* 极光粒子 */}
               {isCurrentlyReading && Array.from({length: 15}).map((_, i) => {
                 const particleHue = (colorShift + i * 24) % 360;
-                const particleSizeCalc = particleSize + Math.sin((frame + i * 12) * 0.08) * particleSize;
-                const orbitRadius = baseSize * 0.037 + i * baseSize * 0.0028;
+                const particleSize = 2 + Math.sin((frame + i * 12) * 0.08) * 2;
+                const orbitRadius = 40 + i * 3;
                 const orbitSpeed = 0.04 + i * 0.002;
                 
                 return (
@@ -174,17 +164,17 @@ export const RainbowAuroraStyle: React.FC<RainbowAuroraStyleProps> = ({
                       position: 'absolute',
                       left: '50%',
                       top: '50%',
-                      width: `${particleSizeCalc}px`,
-                      height: `${particleSizeCalc}px`,
+                      width: `${particleSize}px`,
+                      height: `${particleSize}px`,
                       background: `hsl(${particleHue}, 85%, 75%)`,
                       borderRadius: '50%',
                       transform: `
-                        translate(-50%, -50%)
-                        rotate(${(frame + i * 24) * orbitSpeed}deg)
+                        translate(-50%, -50%) 
+                        rotate(${(frame + i * 24) * orbitSpeed}deg) 
                         translateY(-${orbitRadius}px)
                       `,
                       opacity: 0.6 + Math.sin((frame + i * 8) * 0.06) * 0.4,
-                      boxShadow: `0 0 ${particleSizeCalc * 4}px hsl(${particleHue}, 85%, 75%)`,
+                      boxShadow: `0 0 ${particleSize * 4}px hsl(${particleHue}, 85%, 75%)`,
                       pointerEvents: 'none',
                     }}
                   />
@@ -196,17 +186,17 @@ export const RainbowAuroraStyle: React.FC<RainbowAuroraStyleProps> = ({
                 <>
                   <div style={{
                     position: 'absolute',
-                    inset: `-${baseSize * 0.014}px`,
-                    border: `${borderWidth * 0.71}px solid hsla(${colorShift}, 70%, 70%, 0.4)`,
-                    borderRadius: `${baseSize * 0.028}px`,
+                    inset: -15,
+                    border: `2px solid hsla(${colorShift}, 70%, 70%, 0.4)`,
+                    borderRadius: '30px',
                     pointerEvents: 'none',
                     animation: 'aurora-pulse 2s ease-in-out infinite',
                   }} />
                   <div style={{
                     position: 'absolute',
-                    inset: `-${baseSize * 0.023}px`,
-                    border: `${borderWidth * 0.36}px solid hsla(${colorShift + 120}, 60%, 80%, 0.3)`,
-                    borderRadius: `${baseSize * 0.033}px`,
+                    inset: -25,
+                    border: `1px solid hsla(${colorShift + 120}, 60%, 80%, 0.3)`,
+                    borderRadius: '35px',
                     pointerEvents: 'none',
                     animation: 'aurora-pulse 3s ease-in-out infinite reverse',
                   }} />
@@ -222,8 +212,8 @@ export const RainbowAuroraStyle: React.FC<RainbowAuroraStyleProps> = ({
                       position: 'absolute',
                       left: '50%',
                       top: '50%',
-                      width: `${lightBeamWidth}px`,
-                      height: `${lightBeamHeight}px`,
+                      width: '3px',
+                      height: '100px',
                       background: `linear-gradient(
                         to bottom,
                         transparent,
@@ -232,12 +222,12 @@ export const RainbowAuroraStyle: React.FC<RainbowAuroraStyleProps> = ({
                         transparent
                       )`,
                       transform: `
-                        translate(-50%, -50%)
+                        translate(-50%, -50%) 
                         rotate(${i * 51.4 + frame}deg)
-                        translateY(-${lightBeamHeight / 2}px)
+                        translateY(-50px)
                       `,
                       opacity: 0.7,
-                      filter: `blur(${borderWidth * 0.5}px)`,
+                      filter: 'blur(1px)',
                       pointerEvents: 'none',
                     }}
                   />

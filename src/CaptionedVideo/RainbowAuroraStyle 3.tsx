@@ -29,7 +29,7 @@ export const RainbowAuroraStyle: React.FC<RainbowAuroraStyleProps> = ({
   
   return (
     <AbsoluteFill style={{
-      justifyContent: "flex-end",
+      justifyContent: "center",
       alignItems: "center",
       padding: padding,
       background: "radial-gradient(ellipse, rgba(0,20,40,0.3), rgba(0,5,15,0.9) 70%)",
@@ -174,17 +174,17 @@ export const RainbowAuroraStyle: React.FC<RainbowAuroraStyleProps> = ({
                       position: 'absolute',
                       left: '50%',
                       top: '50%',
-                      width: `${particleSizeCalc}px`,
-                      height: `${particleSizeCalc}px`,
+                      width: `${particleSize}px`,
+                      height: `${particleSize}px`,
                       background: `hsl(${particleHue}, 85%, 75%)`,
                       borderRadius: '50%',
                       transform: `
-                        translate(-50%, -50%)
-                        rotate(${(frame + i * 24) * orbitSpeed}deg)
+                        translate(-50%, -50%) 
+                        rotate(${(frame + i * 24) * orbitSpeed}deg) 
                         translateY(-${orbitRadius}px)
                       `,
                       opacity: 0.6 + Math.sin((frame + i * 8) * 0.06) * 0.4,
-                      boxShadow: `0 0 ${particleSizeCalc * 4}px hsl(${particleHue}, 85%, 75%)`,
+                      boxShadow: `0 0 ${particleSize * 4}px hsl(${particleHue}, 85%, 75%)`,
                       pointerEvents: 'none',
                     }}
                   />
@@ -196,17 +196,17 @@ export const RainbowAuroraStyle: React.FC<RainbowAuroraStyleProps> = ({
                 <>
                   <div style={{
                     position: 'absolute',
-                    inset: `-${baseSize * 0.014}px`,
-                    border: `${borderWidth * 0.71}px solid hsla(${colorShift}, 70%, 70%, 0.4)`,
-                    borderRadius: `${baseSize * 0.028}px`,
+                    inset: -15,
+                    border: `2px solid hsla(${colorShift}, 70%, 70%, 0.4)`,
+                    borderRadius: '30px',
                     pointerEvents: 'none',
                     animation: 'aurora-pulse 2s ease-in-out infinite',
                   }} />
                   <div style={{
                     position: 'absolute',
-                    inset: `-${baseSize * 0.023}px`,
-                    border: `${borderWidth * 0.36}px solid hsla(${colorShift + 120}, 60%, 80%, 0.3)`,
-                    borderRadius: `${baseSize * 0.033}px`,
+                    inset: -25,
+                    border: `1px solid hsla(${colorShift + 120}, 60%, 80%, 0.3)`,
+                    borderRadius: '35px',
                     pointerEvents: 'none',
                     animation: 'aurora-pulse 3s ease-in-out infinite reverse',
                   }} />
@@ -222,8 +222,8 @@ export const RainbowAuroraStyle: React.FC<RainbowAuroraStyleProps> = ({
                       position: 'absolute',
                       left: '50%',
                       top: '50%',
-                      width: `${lightBeamWidth}px`,
-                      height: `${lightBeamHeight}px`,
+                      width: '3px',
+                      height: '100px',
                       background: `linear-gradient(
                         to bottom,
                         transparent,
@@ -232,12 +232,12 @@ export const RainbowAuroraStyle: React.FC<RainbowAuroraStyleProps> = ({
                         transparent
                       )`,
                       transform: `
-                        translate(-50%, -50%)
+                        translate(-50%, -50%) 
                         rotate(${i * 51.4 + frame}deg)
-                        translateY(-${lightBeamHeight / 2}px)
+                        translateY(-50px)
                       `,
                       opacity: 0.7,
-                      filter: `blur(${borderWidth * 0.5}px)`,
+                      filter: 'blur(1px)',
                       pointerEvents: 'none',
                     }}
                   />

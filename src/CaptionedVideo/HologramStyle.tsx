@@ -29,7 +29,7 @@ export const HologramStyle: React.FC<HologramStyleProps> = ({
   
   return (
     <AbsoluteFill style={{
-      justifyContent: "center",
+      justifyContent: "flex-end",
       alignItems: "center",
       padding: padding,
       perspective: `${baseSize * 0.93}px`,
