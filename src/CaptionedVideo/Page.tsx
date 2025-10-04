@@ -39,11 +39,11 @@ export const Page: React.FC<{
 
   // 响应式容器样式
   const container: React.CSSProperties = {
-    justifyContent: "center",  // 水平居中对齐
-    alignItems: "center",      // 垂直居中对齐
-    top: undefined,            // 不设置顶部距离
-    bottom: height * 0.18,     // 距离底部18%（响应式）
-    height: height * 0.08,     // 容器高度8%（响应式）
+    justifyContent: "flex-end",  // 底部对齐
+    alignItems: "center",        // 水平居中对齐
+    top: undefined,              // 不设置顶部距离
+    bottom: height * 0.18,       // 距离底部18%（响应式）
+    height: height * 0.08,       // 容器高度8%（响应式）
   };
 
   // 根据容器宽度自动适配文字大小
@@ -70,8 +70,8 @@ export const Page: React.FC<{
           transform: makeTransform([
             // 缩放动画：从80%放大到100%
             scale(interpolate(enterProgress, [0, 1], [0.8, 1])),
-            // 垂直移动：从下方50像素移动到原位置
-            translateY(interpolate(enterProgress, [0, 1], [50, 0])),
+            // 垂直移动：从下方移动到原位置（响应式）
+            translateY(interpolate(enterProgress, [0, 1], [height * 0.046, 0])),
           ]),
           fontFamily,                      // 使用自定义字体
           textTransform: "uppercase",      // 强制转换为大写字母
@@ -83,8 +83,8 @@ export const Page: React.FC<{
             transform: makeTransform([
               // 缩放动画：从80%放大到100%
               scale(interpolate(enterProgress, [0, 1], [0.8, 1])),
-              // 垂直移动：从下方50像素移动到原位置  
-              translateY(interpolate(enterProgress, [0, 1], [50, 0])),
+              // 垂直移动：从下方移动到原位置（响应式）
+              translateY(interpolate(enterProgress, [0, 1], [height * 0.046, 0])),
             ]),
           }}
         >

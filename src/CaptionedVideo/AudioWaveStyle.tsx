@@ -30,10 +30,10 @@ export const AudioWaveStyle: React.FC<AudioWaveStyleProps> = ({
   const particleOrbitY = Math.min(width, height) * 0.037;
   
   return (
-    <AbsoluteFill style={{ 
-      justifyContent: "flex-end", 
+    <AbsoluteFill style={{
+      justifyContent: "flex-end",
       alignItems: "center",
-      padding: 20,
+      padding: Math.min(width, height) * 0.019,
       background: "linear-gradient(45deg, rgba(16,0,43,0.8), rgba(0,16,43,0.8))",
     }}>
       {/* 背景音波 */}
@@ -70,7 +70,7 @@ export const AudioWaveStyle: React.FC<AudioWaveStyleProps> = ({
         flexWrap: "wrap",
         justifyContent: "center",
         alignItems: "center",
-        gap: 22,
+        gap: Math.min(width, height) * 0.022,
         maxWidth: "90%",
         position: 'relative',
       }}>
