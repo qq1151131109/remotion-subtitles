@@ -81,22 +81,15 @@ export const DiamondCrystalStyle: React.FC<DiamondCrystalStyleProps> = ({
                 fontFamily: "Raleway, sans-serif",
                 fontSize: fontSize,
                 fontWeight: 800,
-                background: isCurrentlyReading
-                  ? `linear-gradient(45deg, 
-                      #ffffff 0%, 
-                      #ff69b4 20%, 
-                      #00ffff 40%, 
-                      #ffff00 60%, 
-                      #ff1493 80%, 
-                      #ffffff 100%)`
-                  : "#ffffff",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: isCurrentlyReading ? "transparent" : "#ffffff",
-                backgroundClip: "text",
+                color: isCurrentlyReading ? "#ffffff" : "#ffffff",
                 textShadow: isCurrentlyReading
-                  ? `0 0 ${baseSize * 0.028}px rgba(255,255,255,0.8), 0 0 ${baseSize * 0.056}px rgba(255,105,180,0.6),
-                     -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000`
-                  : "-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000",
+                  ? `0 0 ${baseSize * 0.037}px rgba(255,255,255,1),
+                     0 0 ${baseSize * 0.019}px rgba(255,255,255,1),
+                     0 0 ${baseSize * 0.074}px rgba(138,43,226,0.8),
+                     -3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000, 3px 3px 0 #000,
+                     0 0 ${baseSize * 0.009}px #000`
+                  : `0 0 ${baseSize * 0.019}px rgba(255,255,255,0.8),
+                     -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000`,
                 padding: isCurrentlyReading ? `${padding * 0.79}px ${padding * 1.05}px` : `${padding * 0.42}px ${padding * 0.63}px`,
                 borderRadius: "0px",
                 clipPath: isCurrentlyReading
@@ -107,13 +100,16 @@ export const DiamondCrystalStyle: React.FC<DiamondCrystalStyleProps> = ({
                 display: 'inline-block',
                 background: isCurrentlyReading
                   ? `linear-gradient(135deg,
-                      rgba(255,255,255,0.15),
-                      rgba(255,105,180,0.1),
-                      rgba(0,255,255,0.1),
-                      rgba(255,255,255,0.15))`
+                      rgba(138,43,226,0.4),
+                      rgba(147,51,234,0.5),
+                      rgba(168,85,247,0.4))`
                   : 'transparent',
-                border: isCurrentlyReading ? `${borderWidth}px solid rgba(255,255,255,0.3)` : 'none',
-                backdropFilter: isCurrentlyReading ? 'blur(2px)' : 'none',
+                border: isCurrentlyReading ? `${borderWidth * 2}px solid rgba(255,255,255,0.6)` : 'none',
+                backdropFilter: isCurrentlyReading ? 'blur(3px)' : 'none',
+                boxShadow: isCurrentlyReading
+                  ? `0 0 ${baseSize * 0.028}px rgba(138,43,226,0.8),
+                     inset 0 0 ${baseSize * 0.019}px rgba(0,0,0,0.5)`
+                  : 'none',
               }}>
                 {token.text}
               </span>

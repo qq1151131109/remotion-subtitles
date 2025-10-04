@@ -33,7 +33,9 @@ export const AudioWaveStyle: React.FC<AudioWaveStyleProps> = ({
     <AbsoluteFill style={{
       justifyContent: "flex-end",
       alignItems: "center",
-      padding: Math.min(width, height) * 0.019,
+      top: undefined,
+      bottom: height * 0.18,
+      height: height * 0.08,
       background: "linear-gradient(45deg, rgba(16,0,43,0.8), rgba(0,16,43,0.8))",
     }}>
       {/* 背景音波 */}

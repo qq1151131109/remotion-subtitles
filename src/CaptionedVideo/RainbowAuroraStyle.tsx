@@ -32,7 +32,7 @@ export const RainbowAuroraStyle: React.FC<RainbowAuroraStyleProps> = ({
       justifyContent: "flex-end",
       alignItems: "center",
       top: undefined,
-      bottom: height * 0.18,
+      bottom: height * 0.25,
       height: height * 0.08,
       background: "radial-gradient(ellipse, rgba(0,20,40,0.3), rgba(0,5,15,0.9) 70%)",
     }}>

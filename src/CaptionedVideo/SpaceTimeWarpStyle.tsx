@@ -31,7 +31,7 @@ export const SpaceTimeWarpStyle: React.FC<SpaceTimeWarpStyleProps> = ({
       justifyContent: "flex-end",
       alignItems: "center",
       top: undefined,
-      bottom: height * 0.18,
+      bottom: height * 0.25,
       height: height * 0.08,
       background: "radial-gradient(circle, rgba(0,0,20,0.8), rgba(20,0,40,0.9) 70%)",
     }}>
