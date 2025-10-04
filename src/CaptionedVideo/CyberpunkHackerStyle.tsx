@@ -35,7 +35,9 @@ export const CyberpunkHackerStyle: React.FC<CyberpunkHackerStyleProps> = ({
     <AbsoluteFill style={{
       justifyContent: "flex-end",
       alignItems: "center",
-      padding: padding,
+      top: undefined,
+      bottom: height * 0.18,
+      height: height * 0.08,
       background: "radial-gradient(circle, rgba(0,20,0,0.3), transparent 70%)",
     }}>
       {/* 背景代码雨 */}

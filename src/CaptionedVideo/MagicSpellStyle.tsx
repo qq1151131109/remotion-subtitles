@@ -37,7 +37,9 @@ export const MagicSpellStyle: React.FC<MagicSpellStyleProps> = ({
     <AbsoluteFill style={{
       justifyContent: "flex-end",
       alignItems: "center",
-      padding: padding,
+      top: undefined,
+      bottom: height * 0.18,
+      height: height * 0.08,
       background: "radial-gradient(circle, rgba(25,0,51,0.3), transparent 70%)",
     }}>
       <div style={{

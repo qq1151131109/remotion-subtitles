@@ -31,7 +31,9 @@ export const RainbowAuroraStyle: React.FC<RainbowAuroraStyleProps> = ({
     <AbsoluteFill style={{
       justifyContent: "flex-end",
       alignItems: "center",
-      padding: padding,
+      top: undefined,
+      bottom: height * 0.18,
+      height: height * 0.08,
       background: "radial-gradient(ellipse, rgba(0,20,40,0.3), rgba(0,5,15,0.9) 70%)",
     }}>
       {/* 极光背景 */}

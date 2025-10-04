@@ -30,7 +30,9 @@ export const LiquidMetalStyle: React.FC<LiquidMetalStyleProps> = ({
     <AbsoluteFill style={{
       justifyContent: "flex-end",
       alignItems: "center",
-      padding: padding,
+      top: undefined,
+      bottom: height * 0.18,
+      height: height * 0.08,
       background: "radial-gradient(circle, rgba(40,40,60,0.5), rgba(10,10,20,0.9) 70%)",
     }}>
       <div style={{

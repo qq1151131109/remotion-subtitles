@@ -32,7 +32,9 @@ export const DiamondCrystalStyle: React.FC<DiamondCrystalStyleProps> = ({
     <AbsoluteFill style={{
       justifyContent: "flex-end",
       alignItems: "center",
-      padding: padding,
+      top: undefined,
+      bottom: height * 0.18,
+      height: height * 0.08,
       background: "radial-gradient(circle, rgba(40,0,60,0.3), rgba(0,0,0,0.8) 70%)",
     }}>
       <div style={{

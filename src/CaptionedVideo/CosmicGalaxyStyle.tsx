@@ -36,7 +36,9 @@ export const CosmicGalaxyStyle: React.FC<CosmicGalaxyStyleProps> = ({
     <AbsoluteFill style={{
       justifyContent: "flex-end",
       alignItems: "center",
-      padding: padding,
+      top: undefined,
+      bottom: height * 0.18,
+      height: height * 0.08,
       background: "radial-gradient(ellipse, rgba(13, 25, 55, 0.5), rgba(3, 7, 18, 0.8) 70%)",
     }}>
       {/* 星空背景 */}

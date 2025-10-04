@@ -66,11 +66,6 @@ import {
   embossed3DVideoSchema,
 } from "./CaptionedVideo/Embossed3DVideo";
 import {
-  FluidGradientVideo,
-  calculateFluidGradientVideoMetadata,
-  fluidGradientVideoSchema,
-} from "./CaptionedVideo/FluidGradientVideo";
-import {
   TechWireframeVideo,
   calculateTechWireframeVideoMetadata,
   techWireframeVideoSchema,
@@ -331,18 +326,6 @@ export const RemotionRoot: React.FC = () => {
         component={Embossed3DVideo}
         calculateMetadata={calculateEmbossed3DVideoMetadata}
         schema={embossed3DVideoSchema}
-        width={1080}
-        height={1920}
-        fps={60}
-        defaultProps={{
-          src: staticFile("sample-video.mp4"),
-        }}
-      />
-      <Composition
-        id="FluidGradientStyle"
-        component={FluidGradientVideo}
-        calculateMetadata={calculateFluidGradientVideoMetadata}
-        schema={fluidGradientVideoSchema}
         width={1080}
         height={1920}
         fps={60}

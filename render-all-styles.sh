@@ -1,15 +1,15 @@
 #!/bin/bash
 
-# 批量渲染所有样式的脚本
-# 生成前5秒的测试视频
+# 测试所有字幕样式
+# 使用默认的 sample-video.mp4 (竖屏 1080x1920)
 
-# 创建输出目录
-mkdir -p rendered-outputs
+OUTPUT_DIR="test-outputs"
+mkdir -p "$OUTPUT_DIR"
 
-# 所有样式的ID列表
-styles=(
+# 根据错误信息中的实际composition名称列表
+STYLES=(
   "CaptionedVideo"
-  "NeonGlowStyle"  
+  "NeonGlowStyle"
   "RetroWaveStyle"
   "GlitchStyle"
   "MinimalStyle"
@@ -33,27 +33,43 @@ styles=(
   "ElectricLightningStyle"
   "SmokeMistStyle"
   "StarryParticleStyle"
+  "QuantumTeleportStyle"
+  "HologramStyle"
+  "MagicSpellStyle"
+  "CyberpunkHackerStyle"
+  "CosmicGalaxyStyle"
+  "SpaceTimeWarpStyle"
+  "DiamondCrystalStyle"
+  "AudioWaveStyle"
+  "LiquidMetalStyle"
+  "RainbowAuroraStyle"
 )
 
-echo "开始批量渲染 ${#styles[@]} 个样式..."
+echo "开始渲染 ${#STYLES[@]} 个字幕样式..."
+echo "输出目录: $OUTPUT_DIR"
+echo ""
 
-# 遍历每个样式进行渲染
-for style in "${styles[@]}"; do
-  echo "正在渲染: $style"
+TOTAL=${#STYLES[@]}
+CURRENT=0
+
+for style in "${STYLES[@]}"; do
+  CURRENT=$((CURRENT + 1))
+  OUTPUT_FILE="$OUTPUT_DIR/${style}.mp4"
   
-  # 渲染前5秒 (150帧，30fps)
-  npx remotion render src/index.ts "$style" "rendered-outputs/${style}.mp4" \
-    --frames=0-149 \
-    --overwrite \
-    --concurrency=1
+  echo "[$CURRENT/$TOTAL] 正在渲染: $style"
   
-  if [ $? -eq 0 ]; then
-    echo "✅ $style 渲染完成"
+  # 不传props,使用defaultProps中的staticFile配置
+  npx remotion render "$style" "$OUTPUT_FILE" --codec=h264 > /dev/null 2>&1
+  
+  if [ $? -eq 0 ] && [ -f "$OUTPUT_FILE" ]; then
+    FILE_SIZE=$(ls -lh "$OUTPUT_FILE" | awk '{print $5}')
+    echo "✅ $style 渲染完成 ($FILE_SIZE)"
   else
     echo "❌ $style 渲染失败"
   fi
-  
-  echo "---"
 done
 
-echo "🎉 批量渲染完成！输出文件位于 rendered-outputs/ 目录"
+echo ""
+echo "全部完成!"
+echo "测试视频保存在: $OUTPUT_DIR/"
+ls -lh "$OUTPUT_DIR/" | tail -n +2 | awk '{print $9, $5}'

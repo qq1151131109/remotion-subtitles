@@ -30,7 +30,9 @@ export const QuantumTeleportStyle: React.FC<QuantumTeleportStyleProps> = ({
     <AbsoluteFill style={{
       justifyContent: "flex-end",
       alignItems: "center",
-      padding: padding,
+      top: undefined,
+      bottom: height * 0.18,
+      height: height * 0.08,
     }}>
       <div style={{
         display: "flex",
